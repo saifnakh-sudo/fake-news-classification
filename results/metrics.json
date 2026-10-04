@@ -1,0 +1,117 @@
+{
+  "dataset": {
+    "file": "fake_news.csv",
+    "sha256": "c6a74d1a3bdd29239b8d6959f70b3bf1eedd11ed0823a613b38d5d82318e098e",
+    "rows_after_exact_deduplication": 800,
+    "label_counts": {
+      "Real": 475,
+      "Fake": 325
+    },
+    "unique_titles": 520,
+    "unique_bodies": 10,
+    "shared_bodies_across_train_test": 10
+  },
+  "split": {
+    "random_state": 42,
+    "stratified": true,
+    "train_rows": 640,
+    "test_rows": 160
+  },
+  "classification": {
+    "accuracy": 1.0,
+    "fake_class_f1": 1.0,
+    "majority_baseline_accuracy": 0.59375,
+    "confusion_matrix": [
+      [
+        95,
+        0
+      ],
+      [
+        0,
+        65
+      ]
+    ],
+    "classification_report": {
+      "Real": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 95.0
+      },
+      "Fake": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 65.0
+      },
+      "accuracy": 1.0,
+      "macro avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 160.0
+      },
+      "weighted avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 160.0
+      }
+    },
+    "train_only_share_cap": 11247.25,
+    "features": [
+      "Title_Word_Count",
+      "Title_Char_Count",
+      "Body_Word_Count",
+      "Body_Char_Count",
+      "Body_Avg_Word_Length",
+      "Clickbait_Score",
+      "Shares_Per_Char",
+      "Log_Shares"
+    ]
+  },
+  "sharing_regression": {
+    "mae": 12823.086230038938,
+    "median_baseline_mae": 8001.54375,
+    "features": [
+      "Title_Word_Count",
+      "Title_Char_Count",
+      "Body_Word_Count",
+      "Body_Char_Count",
+      "Body_Avg_Word_Length",
+      "Clickbait_Score"
+    ],
+    "target": "Uncapped Nb_Partages",
+    "note": "Exploratory retrospective regression; not validated as a forecast."
+  },
+  "exploration": {
+    "short_high_share_articles": 160,
+    "n_text_clusters": 2,
+    "cluster_keywords": {
+      "0": [
+        "want",
+        "shocking",
+        "revelation",
+        "don",
+        "know"
+      ],
+      "1": [
+        "situation",
+        "recent",
+        "reports",
+        "according",
+        "expected",
+        "developing"
+      ]
+    }
+  },
+  "environment": {
+    "python": "3.11.9",
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2"
+  },
+  "limitation": "Template-style workshop data with overlapping text across the random split. Metrics are educational, not real-world validation."
+}
