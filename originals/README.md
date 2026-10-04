@@ -1,6 +1,6 @@
 # Original workshop submissions
 
-These files preserve the submitted work. They are historical reference material; use `src/analysis.py` or the portfolio notebook for the runnable edition.
+These files preserve the original project written entirely by **Ahmed Saifeddine Nakhli** for his participation in **GDG on Campus – ENSAK**. They are historical reference material; use `src/analysis.py` or the portfolio notebook for the runnable edition.
 
 - `project_afinal_present.py`: presentation script using `fake_news.csv` with share-value clipping.
 - `project_aafinal.py`: earlier script using `fake_news_no_outliers.csv`.

@@ -1,6 +1,6 @@
 # Fake News Classification & Analysis
 
-**A Python data science project developed during GDG on Campus – ENSAK.**
+**A Python data science project independently developed by Ahmed Saifeddine Nakhli for participation in GDG on Campus – ENSAK.**
 
 This project explores how a machine-learning workflow can classify workshop news examples and reveal patterns in their text and sharing activity. It combines data preparation, feature engineering, Random Forest classification, visual evaluation, and exploratory text clustering.
 
@@ -121,6 +121,8 @@ These are preparation changes made for the portfolio edition; they should not be
 
 ## Project context and attribution
 
-Ahmed Saifeddine Nakhli participated in this project at **GDG on Campus – ENSAK**. The certificate is a local chapter's project-completion achievement, not a Google professional certification. The workshop files do not identify every contributor or individual contribution; no sole-authorship claim is made.
+**Ahmed Saifeddine Nakhli is the sole author of the original project.** He designed and implemented it entirely himself for his participation in **GDG on Campus – ENSAK**. The original scripts and notebook in `originals/` are his submitted work.
 
-This repository preserves the supplied educational materials and adds a documented portfolio edition. No open-source license is assigned because the supplied files do not establish the authorship and licensing of all workshop materials. See [data provenance](data/README.md).
+The certificate recognizes completion of the local chapter's project requirements; it is not a Google professional certification.
+
+This repository preserves his original project and adds a documented portfolio edition with preparation changes described above. No open-source license has been selected for this repository. Dataset provenance is documented separately in [data/README.md](data/README.md).

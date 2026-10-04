@@ -1,6 +1,6 @@
 # Workshop data
 
-These are the CSV files supplied with Ahmed Saifeddine Nakhli's GDG on Campus – ENSAK project materials.
+These are the CSV files used in Ahmed Saifeddine Nakhli's independently developed project for participation in GDG on Campus – ENSAK.
 
 | File | Rows | Real | Fake | Use |
 | --- | ---: | ---: | ---: | --- |
