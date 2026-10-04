@@ -1,4 +1,4 @@
-"""Checks for the substantive corrections to the original workshop code."""
+"""Checks for feature construction and regression inputs."""
 
 import unittest
 

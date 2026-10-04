@@ -1,6 +1,6 @@
-"""Reproducible portfolio edition of the GDG workshop analysis.
+"""News classification and analysis for the GDG project.
 
-The numeric classifier is an educational baseline, not a fact-checking service.
+The numeric classifier learns from the labels in the project dataset.
 Original submissions are retained separately in originals/.
 """
 

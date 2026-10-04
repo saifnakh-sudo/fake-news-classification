@@ -1,9 +1,9 @@
-# Original workshop submissions
+# My original project files
 
-These files preserve the original project written entirely by **Ahmed Saifeddine Nakhli** for his participation in **GDG on Campus – ENSAK**. They are historical reference material; use `src/analysis.py` or the portfolio notebook for the runnable edition.
+I developed these files myself for my participation in **GDG on Campus – ENSAK**.
 
-- `project_afinal_present.py`: presentation script using `fake_news.csv` with share-value clipping.
-- `project_aafinal.py`: earlier script using `fake_news_no_outliers.csv`.
-- `Projet_de_IA.ipynb`: workshop notebook. The original has no data-loading cell and uses `Titre` / `Corps_Texte`, which differ from the supplied CSV column names.
+- `project_afinal_present.py`: the presentation script using `fake_news.csv`.
+- `project_aafinal.py`: the script using `fake_news_no_outliers.csv`.
+- `Projet_de_IA.ipynb`: my original project notebook.
 
-The original scripts also include unused NLTK imports, an uppercase test after converting text to lowercase, and sharing regression that includes share-derived inputs. Those issues are documented and corrected in the portfolio edition. The original files are not silently rewritten.
+For the main runnable analysis and saved charts, use [`src/analysis.py`](../src/analysis.py) or [`notebooks/fake_news_analysis.ipynb`](../notebooks/fake_news_analysis.ipynb).

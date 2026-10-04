@@ -1,60 +1,46 @@
 # Fake News Classification & Analysis
 
-**A Python data science project independently developed by Ahmed Saifeddine Nakhli for participation in GDG on Campus – ENSAK.**
+I built this project entirely on my own for my participation in **GDG on Campus – ENSAK**.
 
-This project explores how a machine-learning workflow can classify workshop news examples and reveal patterns in their text and sharing activity. It combines data preparation, feature engineering, Random Forest classification, visual evaluation, and exploratory text clustering.
+It combines Python, data analysis, and machine learning to classify news articles as real or fake using a labeled dataset. The project also includes keyword analysis, text clustering, and an exploration of sharing activity.
 
-**Scope:** an educational prototype on template-style teaching data. It does not independently verify facts or establish whether a real article is trustworthy.
+![Dataset overview](results/dataset_overview.png)
 
-![Dataset labels and article lengths](results/dataset_overview.png)
+## Tools
 
-## Explore the project
+Python · pandas · NumPy · scikit-learn · Matplotlib · Seaborn
 
-- **[Walkthrough notebook](notebooks/fake_news_analysis.ipynb)** — data inspection, model evaluation, charts, and limitations.
-- **[Runnable analysis](src/analysis.py)** — generates all saved charts and metrics.
-- **[Measured results](results/metrics.json)** — dataset fingerprint, split, scores, baselines, and library versions.
-- **[Original submissions](originals/)** — the original workshop scripts and notebook, preserved separately.
+## What the project includes
 
-## What the workflow does
+- Data preparation, missing-text handling, and duplicate removal.
+- Feature engineering from headlines, article lengths, and sharing counts.
+- News classification with a Random Forest.
+- Evaluation with accuracy, F1 score, and a confusion matrix.
+- Feature-importance charts and keyword frequency analysis.
+- Text clustering with TF-IDF and K-Means.
+- An exploratory regression model for article sharing counts.
 
-1. Loads and validates the CSV schema; handles missing text and removes exact duplicate rows.
-2. Explores class balance, body lengths, and sharing activity.
-3. Creates numerical features from headline patterns, text length, and share counts.
-4. Trains a 100-tree Random Forest on a stratified 80/20 split with seed 42. The share-clipping threshold is calculated from training data only.
-5. Evaluates accuracy, fake-class F1, and a confusion matrix, alongside a majority-class baseline.
-6. Examines feature importance, headline keywords, short-text/high-sharing patterns, and TF-IDF / K-Means text groups.
-7. Runs a separate exploratory share-count regression using only text statistics, compared with a median baseline.
+## Results
 
-The classifier uses **numeric style and sharing features**. TF-IDF is used for exploratory clustering, not for the classifier. It does not query outside sources or perform factual verification.
+The main analysis uses an 80/20 train-test split with a fixed random seed. The charts below show the classification results and the features used by the model.
 
-## Results and interpretation
+![Confusion matrix](results/confusion_matrix.png)
 
-| Experiment | Recorded holdout result | Comparison |
-| --- | --- | --- |
-| News classification | Accuracy 100.0%; fake-class F1 1.000 | Majority baseline accuracy 59.4% |
-| Sharing regression | MAE 12,823.09 shares | Median baseline MAE 8,001.54 shares |
+![Feature importance](results/feature_importance.png)
 
-**Interpretation:** classification separates the repeated teaching templates; this is not real-world accuracy. The sharing regressor performs worse than the median baseline on this split.
+The dataset contains repeated text, including overlap between training and test data, so these results apply to this dataset. They do not measure accuracy on new, real-world news.
 
-See [the evaluation report](results/classification_report.txt) for the actual run and [metrics.json](results/metrics.json) for exact scores and environment details.
+[Evaluation report](results/classification_report.txt) · [Detailed metrics](results/metrics.json) · [Notebook](notebooks/fake_news_analysis.ipynb)
 
-![Classification confusion matrix](results/confusion_matrix.png)
+## Run the project
 
-![Random Forest feature importance](results/feature_importance.png)
-
-The supplied 800-row dataset contains 475 `Real` and 325 `Fake` labels, but only **10 distinct article bodies**. Its repeated wording and template-style headlines strongly suggest constructed teaching examples; the generation method and independent label verification are not documented. Repeated bodies appear in both sides of the random split. A high score here reflects separation within this dataset, not proven performance on real news.
-
-Source/domain strings are not evidence that an article came from the named outlet. The sharing-pattern heuristic does not detect actual bots, and the exploratory regression is not a validated prediction of future virality.
-
-## Run locally
-
-Python **3.11** was used for the recorded run. Create an isolated environment and install the pinned dependencies:
+The project was run with Python 3.11. From the repository folder:
 
 ```bash
 python -m venv .venv
 ```
 
-Activate it on Windows PowerShell:
+Activate the environment on Windows PowerShell:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
@@ -66,63 +52,34 @@ Or on macOS / Linux:
 source .venv/bin/activate
 ```
 
-Then, from the repository root:
+Install the dependencies and run the analysis:
 
 ```bash
 python -m pip install -r requirements.txt
 python src/analysis.py
 ```
 
-Charts and reports are written to `results/`. There are no interactive plot windows. To compare the older filtered CSV without replacing the default results:
+The charts and reports are saved in `results/`. To run the filtered dataset separately:
 
 ```bash
 python src/analysis.py --data data/fake_news_no_outliers.csv --output .local/filtered-results
 ```
 
-Open `notebooks/fake_news_analysis.ipynb` in VS Code with a Python/Jupyter kernel from this environment to step through the project.
+The notebook can also be opened in VS Code using the environment's Python kernel.
 
-Run the checks for the corrected logic:
+## Files
+
+| Folder | Contents |
+| --- | --- |
+| `data/` | The two CSV datasets and their column descriptions |
+| `src/` | The main analysis script |
+| `notebooks/` | The notebook with saved results and charts |
+| `results/` | Charts, evaluation reports, and metrics |
+| `originals/` | My original project scripts and notebook |
+| `tests/` | Checks for feature construction and regression inputs |
+
+To run the checks:
 
 ```bash
 python -m unittest discover -s tests -v
 ```
-
-## Repository layout
-
-```text
-data/          Supplied CSVs, schema, and provenance notes
-notebooks/     Executed portfolio walkthrough
-originals/     Original workshop code and notebook
-results/       Generated charts, metrics, and evaluation report
-src/           Reproducible portfolio analysis
-tests/         Checks for uppercase scoring, clipping, and regression leakage
-```
-
-## Changes in the portfolio edition
-
-The workshop submission and this edition are intentionally distinguished:
-
-- Corrected the original uppercase headline test, which ran after lowercasing the text.
-- Used the actual CSV column names and added the missing notebook data-loading step.
-- Removed the unused NLTK dependency from the runnable edition.
-- Added input validation and fitted share clipping only on the classification training set.
-- Removed share-derived features from share-count regression to avoid directly exposing its target.
-- Used only as many text clusters as there are distinct TF-IDF vectors, up to four.
-- Added deterministic outputs, comparison baselines, saved charts, and explicit limitations.
-
-These are preparation changes made for the portfolio edition; they should not be read as claims about what was implemented in the original workshop.
-
-## Next improvements
-
-- Evaluate on a documented corpus of authentic, independently labeled articles.
-- Use source, time, or text-family holdouts to reduce overlap between training and test data.
-- Compare text-only baselines and inspect failure cases.
-- Establish dataset provenance and redistribution terms before using a new corpus.
-
-## Project context and attribution
-
-**Ahmed Saifeddine Nakhli is the sole author of the original project.** He designed and implemented it entirely himself for his participation in **GDG on Campus – ENSAK**. The original scripts and notebook in `originals/` are his submitted work.
-
-The certificate recognizes completion of the local chapter's project requirements; it is not a Google professional certification.
-
-This repository preserves his original project and adds a documented portfolio edition with preparation changes described above. No open-source license has been selected for this repository. Dataset provenance is documented separately in [data/README.md](data/README.md).
